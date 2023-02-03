@@ -11,6 +11,11 @@ export class PostDatabase extends BaseDatabase {
       .into(PostDatabase.TABLE_NAME);
   }
 
+  async search (item: any, like: any, value: any) {
+    const result = await PostDatabase.connection().select().where(item, like, value).from(PostDatabase.TABLE_NAME)
+    return result
+  }
+
   getAll = async(): Promise<any> => {
     try {
         const result = await PostDatabase.connection().select("*").from(PostDatabase.TABLE_NAME)

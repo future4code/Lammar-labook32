@@ -3,7 +3,18 @@ POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "name": "teste",
-    "email": "teste@email.com",
-    "password": "112233"
+    "name": "teste1",
+    "email": "teste1@email.com",
+    "password": "11223344"
+}
+
+### CREATE POST
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo": "teste2",
+    "description": "teste2",
+    "type": "NORMAL",
+    "authorId": "8c788a42-883f-4837-bf18-c0296c51887a"
 }

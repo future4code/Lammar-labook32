@@ -1,8 +1,8 @@
 import { UserDatabase } from "../data/UserDatabase"
 import { invalidData, invalidEmail, invalidPassword } from "../error/userError"
-import { User } from "../model/User"
-import { UserInputDTO, InsertUserInputDTO } from "../model/userDTO"
+import { UserInputDTO } from "../model/userDTO"
 import { generateId } from "../services/idGenerator"
+import {user} from "../model/User"
 
 export class UserBusiness {
   async create({ email, name, password }: UserInputDTO):Promise<void> {
@@ -20,7 +20,7 @@ export class UserBusiness {
 
     const id = generateId()
 
-    const user: InsertUserInputDTO = {
+    const user: user = {
       id,
       name,
       email,
@@ -31,7 +31,7 @@ export class UserBusiness {
     await userDatabase.create(user)
   }
 
-  getAll = async (): Promise <User[]> => {
+  getAll = async (): Promise <user[]> => {
     const users = await new UserDatabase().getAll()
     return users
   }
