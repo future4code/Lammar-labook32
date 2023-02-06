@@ -1,15 +1,15 @@
-## Labook
+# Labook
 
-# Link do deploy:
+## Link do deploy:
 https://labook32.onrender.com
 
-# Link da documentação:
+## Link da documentação:
 https://documenter.getpostman.com/view/22375499/2s935poiB9
 
-# Endpoints
-- Criação de usuário
-- Criação de post
-- Criação de amizade
-- Exclusão de amizade
-- Retorno de informações de um post
+## Endpoints
+- Create user: criação de usuário
+- Create post: criação de post
+- Create friendship: criação de amizade
+- Delete friendship: exclusão de amizade
+- Get Post By Id: retorno de informações de um post
 
