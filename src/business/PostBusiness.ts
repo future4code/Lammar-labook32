@@ -1,7 +1,10 @@
 import { PostDatabase } from "../data/PostDatabase"
+import { UserDatabase } from "../data/UserDatabase"
 import { invalidData, invalidId, invalidType } from "../error/postError"
+import { post } from "../model/Post"
 import { InsertPostInputDTO, PostInputDTO } from "../model/PostDTO"
 import { generateId } from "../services/idGenerator"
+import { UserBusiness } from "./UserBusiness"
 
 
 export class PostBusiness {
@@ -17,8 +20,9 @@ export class PostBusiness {
     }
 
     const postDatabase = new PostDatabase()
+    const userDatabase = new UserDatabase()
 
-    let idExists = await postDatabase.search("author_id", "like", authorId)
+    let idExists = await userDatabase.search("id", "like", authorId)
 
     if (idExists.length < 1) {
         throw new invalidId()
@@ -37,8 +41,16 @@ export class PostBusiness {
     await postDatabase.create(post)
   }
 
-  getAll = async (): Promise <any> => {
-    const posts = await new PostDatabase().getAll()
-    return posts
+  async getById (id:string): Promise <post[]> {
+    const postDatabase = new PostDatabase()
+
+    let idExists = await postDatabase.search("id", "like", id)
+
+    if (idExists.length < 1) {
+        throw new invalidId()
+    }
+
+    const post = postDatabase.searchById(id)
+    return post
   }
 }

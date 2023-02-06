@@ -15,9 +15,21 @@ export class UserDatabase extends BaseDatabase {
       .into(UserDatabase.TABLE_NAME);
   }
 
+  async search (item: any, like: any, value: any) {
+    const result = await UserDatabase.connection()
+    .select()
+    .where(item, like, value)
+    .from(UserDatabase.TABLE_NAME)
+
+    return result
+  }
+
   getAll = async(): Promise<any> => {
     try {
-        const result = await UserDatabase.connection().select("*").from(UserDatabase.TABLE_NAME)
+        const result = await UserDatabase.connection()
+        .select("*")
+        .from(UserDatabase.TABLE_NAME)
+        
         return result
     } catch (error:any) {
         throw new CustomError(error.statusCode, error.message)
