@@ -1,0 +1,49 @@
+### CREATE USER
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "teste3",
+    "email": "teste3@email.com",
+    "password": "1122334455"
+}
+
+### CREATE POST
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo": "teste3",
+    "description": "teste3",
+    "type": "NORMAL",
+    "authorId": "4f692b28-65a5-4a27-9c6c-8f7348dccfae"
+}
+
+### GET POST BY ID
+GET http://localhost:3003/post/f664305b-19de-4e74-8162-7494bf43858c
+
+### CREATE FRIENDSHIP
+POST http://localhost:3003/friendship/create
+Content-Type: application/json
+
+{
+    "userId":"d7e59d24-3b15-47f2-9163-613707e3d291",
+    "friendId":"5bdebd81-2745-4e58-8fe7-331de3cf809e"
+}
+
+### DELETE FRIENDSHIP
+DELETE http://localhost:3003/friendship/delete
+Content-Type: application/json
+
+{
+    "userId":"d7e59d24-3b15-47f2-9163-613707e3d291",
+    "friendId":"5bdebd81-2745-4e58-8fe7-331de3cf809e"
+}
+
+### GET FEED
+GET http://localhost:3003/friendship/feed
+Content-Type: application/json
+
+{
+    "id":"d7e59d24-3b15-47f2-9163-613707e3d291"
+}
